@@ -13,6 +13,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/scons.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 " end of Vundle
@@ -25,10 +26,11 @@ set secure
 set mouse=a
 
 " keymaps
-let mapleader='\<Space>'
+let mapleader = "\<Space>"
 inoremap jj <ESC>
 vnoremap . :norm.<CR>
-map x :NERDTree<CR>
+map <leader>x :NERDTree<CR>
+
 
 " editors
 syntax enable
