@@ -1,0 +1,23 @@
+[alias]
+    br = branch
+    logp = log --pretty=oneline
+    resethard = reset HEAD --hard
+    last = log -1 HEAD
+    di = diff
+    staged = diff --cached
+    coma = commit --amend
+    st = status
+    chp = cherry-pick
+    ck = checkout
+    unstage = reset HEAD --
+    po = "!sh -c \"git push origin `git symbolic-ref --short HEAD`\""
+    pof = "!sh -c \"git push origin `git symbolic-ref --short HEAD` -f\""
+
+[core]
+	editor = vim -f
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
