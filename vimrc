@@ -22,6 +22,11 @@ call vundle#end()
 set exrc
 set secure
 
+" switch interpreter for jedi-vim, syntastic and YCM to adapt Python 3
+let g:jedi#force_py_version = 3
+let g:syntastic_python_python_exec = 'python3'
+let g:ycm_server_python_interpreter = 'python3'
+
 " enable mouse
 set mouse=a
 
