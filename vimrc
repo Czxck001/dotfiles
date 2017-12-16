@@ -34,6 +34,7 @@ set mouse=a
 let mapleader = "\<Space>"
 inoremap jj <ESC>
 vnoremap . :norm.<CR>
+nnoremap Y y$
 map <leader>x :NERDTree<CR>
 
 
