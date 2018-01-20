@@ -17,6 +17,7 @@ Plugin 'vim-scripts/scons.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 " end of Vundle
