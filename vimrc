@@ -1,4 +1,5 @@
 " begin of Vundle package management
+" To install bundles, type :BundleInstall
 set nocompatible
 filetype off
 
@@ -14,6 +15,8 @@ Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/scons.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 " end of Vundle
@@ -37,6 +40,14 @@ vnoremap . :norm.<CR>
 nnoremap Y y$
 map <leader>x :NERDTree<CR>
 
+" easy navigation between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" reverse J command
+nnoremap <C-S-J> vaW<Esc>Bi<CR><Esc>k:s/\s\+$//<CR>$
 
 " editors
 syntax enable
@@ -64,6 +75,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " set theme
 set background=dark
 colorscheme solarized
+
+" set theme for vim-airline
+let g:airline_theme = 'solarized'
 
 " fix backspace bug (somehow happened, but don't know why)
 set backspace=indent,eol,start
