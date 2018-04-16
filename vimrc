@@ -48,9 +48,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" reverse J command
-nnoremap <C-S-J> vaW<Esc>Bi<CR><Esc>k:s/\s\+$//<CR>$
-
 " editors
 syntax enable
 set encoding=utf-8
