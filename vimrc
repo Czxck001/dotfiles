@@ -8,7 +8,7 @@ call vundle#begin()
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'c.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'valloric/youcompleteme'
