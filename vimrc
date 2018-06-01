@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 " end of Vundle
