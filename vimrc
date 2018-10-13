@@ -11,6 +11,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'c.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/scons.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -85,3 +86,8 @@ set backspace=indent,eol,start
 " for YCM C/C++ autocomplete
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Open NERDTree in new tabs and windows if no command line args set
+autocmd VimEnter * if !argc() | NERDTree | endif
+autocmd BufEnter * if !argc() | NERDTreeMirror | endif
+autocmd VimEnter * wincmd w
