@@ -3,7 +3,6 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
@@ -22,6 +21,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'cespare/vim-toml'
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
 " end of Vundle
