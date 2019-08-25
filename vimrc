@@ -9,8 +9,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-scripts/c.vim'
-Plug 'davidhalter/jedi-vim'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/scons.vim'
@@ -22,18 +20,19 @@ Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'cespare/vim-toml'
 Plug 'tikhomirov/vim-glsl'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'vhda/verilog_systemverilog.vim'
 
 call plug#end()
-" end of Vundle
+" end of vim-plug
 
 " securities for custom .vimrc
 set exrc
 set secure
 
-" switch interpreter for jedi-vim, syntastic and YCM to adapt Python 3
-let g:jedi#force_py_version = 3
+" switch interpreter for syntastic to Python 3
 let g:syntastic_python_python_exec = 'python3'
-let g:ycm_server_python_interpreter = 'python3'
 
 " enable mouse
 set mouse=a
@@ -94,6 +93,12 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 
 " Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Remap keys for gotos
+nmap <silent> gd :call CocAction('jumpDefinition', 'tab drop') <CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 " /coc.nvim
 
 " set theme
@@ -101,16 +106,16 @@ set background=dark
 colorscheme solarized
 
 " set theme for vim-airline
-let g:airline_theme = 'solarized'
+let g:airline_theme='atomic'
 
 " fix backspace bug (somehow happened, but don't know why)
 set backspace=indent,eol,start
-
-" for YCM C/C++ autocomplete
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Open NERDTree in new tabs and windows if no command line args set
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd BufEnter * if !argc() | NERDTreeMirror | endif
 autocmd VimEnter * wincmd w
+
+" Prevent Vim from indenting line when typing a colon (:) in Python
+" https://stackoverflow.com/questions/19320747/prevent-vim-from-indenting-line-when-typing-a-colon-in-python
+set indentkeys-=:

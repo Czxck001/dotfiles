@@ -1,10 +1,12 @@
 # dotfiles
+
 Configuration files of Vim, Zsh, ConEmu, etc.
 
 ## Soft Linkage
 ```bash
-ln -s vimrc ~/.vimrc
-ln -s gitconfig ~/.gitconfig
+ln -s $(realpath vimrc) ~/.vimrc
+ln -s $(realpath gitconfig) ~/.gitconfig
+ln -s $(realpath coc-settings.json) ~/.vim/coc-settings.json
 ```
 
 ## Vim Setup
@@ -19,10 +21,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 b) Use vim-plug to install plugins:
 
 ```
-:PlugInstall 
+:PlugInstall
 ```
 
 c) Install [ccls](https://github.com/MaskRay/ccls).
 
 d) [Configure ccls for coc.nvim](https://github.com/MaskRay/ccls/wiki/coc.nvim).
 
+e) Install [coc-python](https://github.com/neoclide/coc-python).
