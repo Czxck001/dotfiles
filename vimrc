@@ -23,6 +23,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'vhda/verilog_systemverilog.vim'
+Plug 'drmikehenry/vim-headerguard'
 
 call plug#end()
 " end of vim-plug
