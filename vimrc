@@ -7,8 +7,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-syntastic/syntastic'
-Plug 'vim-scripts/c.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/scons.vim'
@@ -24,6 +22,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'drmikehenry/vim-headerguard'
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
 
 call plug#end()
 " end of vim-plug
