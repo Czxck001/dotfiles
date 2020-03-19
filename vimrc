@@ -55,7 +55,7 @@ nnoremap <C-H> <C-W><C-H>
 syntax enable
 set encoding=utf-8
 set number
-set colorcolumn=80
+set colorcolumn=88
 set clipboard=unnamed
 
 " tabs and spaces
@@ -120,3 +120,8 @@ autocmd VimEnter * wincmd w
 " Prevent Vim from indenting line when typing a colon (:) in Python
 " https://stackoverflow.com/questions/19320747/prevent-vim-from-indenting-line-when-typing-a-colon-in-python
 set indentkeys-=:
+
+" Custom header guard for hpp.
+function! g:HeaderguardName()
+  return "INC_" . toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g')) . "_"
+endfunction

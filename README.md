@@ -7,6 +7,7 @@ Configuration files of Vim, Zsh, ConEmu, etc.
 ln -s $(realpath vimrc) ~/.vimrc
 ln -s $(realpath gitconfig) ~/.gitconfig
 ln -s $(realpath coc-settings.json) ~/.vim/coc-settings.json
+ln -s $(realpath flake8) ~/.config/flake8
 ```
 
 ## Vim Setup
