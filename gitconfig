@@ -26,6 +26,3 @@
 
 [status]
 	submoduleSummary = true
-
-[credential]
-	helper = cache --timeout 28800
