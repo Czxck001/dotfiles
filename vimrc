@@ -24,6 +24,7 @@ Plug 'vhda/verilog_systemverilog.vim'
 Plug 'drmikehenry/vim-headerguard'
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
+Plug 'chiphogg/vim-prototxt'
 
 call plug#end()
 " end of vim-plug
