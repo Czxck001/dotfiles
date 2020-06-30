@@ -1,6 +1,8 @@
 # dotfiles
 
-Configuration files of Vim, Zsh, ConEmu, etc.
+Configuration files of Vim, Tmux, etc.
+
+Contributions are always welcome.
 
 ## Soft Linkage
 ```bash
