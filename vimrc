@@ -25,6 +25,7 @@ Plug 'drmikehenry/vim-headerguard'
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
 Plug 'chiphogg/vim-prototxt'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
 " end of vim-plug
@@ -37,6 +38,7 @@ set secure
 let g:syntastic_python_python_exec = 'python3'
 
 " enable mouse
+set ttymouse=xterm2
 set mouse=a
 
 " keymaps
