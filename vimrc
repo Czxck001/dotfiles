@@ -1,5 +1,3 @@
-" begin of Vundle package management
-" To install bundles, type :BundleInstall
 set nocompatible
 filetype off
 
@@ -7,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.75', 'do': { -> coc#util#install()}}
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/scons.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -20,7 +18,6 @@ Plug 'cespare/vim-toml'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'vhda/verilog_systemverilog.vim'
 Plug 'drmikehenry/vim-headerguard'
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
@@ -78,6 +75,11 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " coc.nvim
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
