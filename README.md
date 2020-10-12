@@ -34,6 +34,8 @@ d) [Configure ccls for coc.nvim](https://github.com/MaskRay/ccls/wiki/coc.nvim).
 
 e) Install [coc-python](https://github.com/neoclide/coc-python).
 
+f) Install [svls](https://github.com/dalance/svls).
+
 ## Tmux Setup
 
 Install [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm):
