@@ -56,7 +56,7 @@ syntax enable
 set encoding=utf-8
 set number
 set colorcolumn=88
-set clipboard=unnamedplus,autoselect,exclude:cons\\\\|linux
+set clipboard=unnamed,unnamedplus,exclude:cons\\\\|linux
 
 " tabs and spaces
 filetype plugin indent on
