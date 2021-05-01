@@ -56,7 +56,18 @@ syntax enable
 set encoding=utf-8
 set number
 set colorcolumn=88
-set clipboard=unnamed,unnamedplus,exclude:cons\\\\|linux
+"set clipboard=unnamed,unnamedplus,exclude:cons\\\\|linux
+
+" Setting up Vim to yank to clipboard on Mac OS X
+" See https://www.markcampbell.me/2016/04/12
+"  /setting-up-yank-to-clipboard-on-a-mac-with-vim.html
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed  " copy to the system clipboard
+  if has("unnamedplus")  " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 
 " tabs and spaces
 filetype plugin indent on
