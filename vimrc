@@ -29,6 +29,10 @@ Plug 'voldikss/vim-floaterm'
 Plug 'adelarsq/vim-matchit'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tommcdo/vim-exchange'
+Plug 'rhysd/clever-f.vim'
+Plug 'markonm/traces.vim'
+Plug 'itchyny/vim-cursorword'
 
 call plug#end()
 " end of vim-plug
