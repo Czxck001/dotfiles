@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.75', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.78'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/scons.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -23,6 +23,12 @@ Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
 Plug 'chiphogg/vim-prototxt'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'voldikss/vim-floaterm'
+Plug 'adelarsq/vim-matchit'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'jistr/vim-nerdtree-tabs'
 
 call plug#end()
 " end of vim-plug
@@ -43,7 +49,7 @@ let mapleader = "\<Space>"
 inoremap jj <ESC>
 vnoremap . :norm.<CR>
 nnoremap Y y$
-map <leader>x :NERDTree<CR>
+map <leader>x :NERDTreeTabsToggle<CR>
 
 " easy navigation between splits
 nnoremap <C-J> <C-W><C-J>
@@ -84,7 +90,6 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
 " coc.nvim
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -122,16 +127,20 @@ nmap <silent> gr <Plug>(coc-references)
 set background=dark
 colorscheme solarized
 
+" airline#tabline
+let g:airline#extensions#tabline#enabled = 1
+
 " set theme for vim-airline
 let g:airline_theme='atomic'
+"let g:airline_theme='zenburn'
+"let g:airline_theme='solarized'
+"let g:airline_solarized_bg='dark'
 
 " fix backspace bug (somehow happened, but don't know why)
 set backspace=indent,eol,start
 
-" Open NERDTree in new tabs and windows if no command line args set
-autocmd VimEnter * if !argc() | NERDTree | endif
-autocmd BufEnter * if !argc() | NERDTreeMirror | endif
-autocmd VimEnter * wincmd w
+" Open NERDTree at bootup
+let g:nerdtree_tabs_open_on_console_startup=1
 
 " Prevent Vim from indenting line when typing a colon (:) in Python
 " https://stackoverflow.com/questions/19320747/prevent-vim-from-indenting-line-when-typing-a-colon-in-python
@@ -141,3 +150,21 @@ set indentkeys-=:
 function! g:HeaderguardName()
   return "INC_" . toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g')) . "_"
 endfunction
+
+" fzf.vim
+command F Files
+
+" Floaterm
+let g:floaterm_autoclose=2  " Always auto-close window.
+command T FloatermNew
+command B FloatermNew broot
+
+" tab controls
+nnoremap <silent> <C-o> :tabprev<CR>
+nnoremap <silent> <C-p> :tabnext<CR>
+nnoremap <silent> <C-t> :tabnew<CR>
+
+" vim-visual-multi
+" Q: exit visual-multi
+nmap <C-K> <C-Up>
+nmap <C-J> <C-Down>
