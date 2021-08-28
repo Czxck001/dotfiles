@@ -44,3 +44,20 @@ Install [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm):
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+## Troubleshooting
+
+### Vim's `E353: Nothing in register +` after reattaching to a tmux session
+
+In `vimrc`, the clipboard is configured to `unnamedplus` whenever X11 is available. This enables a synchronized clipboard when executing Vim on a remote server via an SSH session with X11 forwarded.
+
+This mechanism works with plain shell-over-SSH as well as with tmux. However, if one opened Vim in a remote tmux session, deattached the session and logout SSH, then log back and reattach to the same tmux session, the clipboard will no longer work and will throw the error "E353: Nothing in register +".
+
+The solution would be working with Vim newer than 8.1.1307 on the remote server, then after tmux reattachment, execute
+```
+:xrestore
+```
+in the Vim console.
+
+Also see
+- https://github.com/vim/vim/issues/203
+- https://github.com/vim/vim/pull/844
