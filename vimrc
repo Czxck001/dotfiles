@@ -133,6 +133,7 @@ colorscheme solarized
 
 " airline#tabline
 let g:airline#extensions#tabline#enabled = 1
+let airline#extensions#tabline#show_buffers = 0
 
 " set theme for vim-airline
 let g:airline_theme='atomic'
