@@ -178,5 +178,5 @@ nmap <C-J> <C-Down>
 
 " vim-session
 let g:session_autosave = 'no'
-command SS SaveSession
-command OS OpenSession
+command SS SaveSession default
+command OS OpenSession default
