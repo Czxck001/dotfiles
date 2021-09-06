@@ -2,6 +2,8 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -33,8 +35,6 @@ Plug 'tommcdo/vim-exchange'
 Plug 'rhysd/clever-f.vim'
 Plug 'markonm/traces.vim'
 Plug 'itchyny/vim-cursorword'
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'
 
 call plug#end()
 " end of vim-plug
@@ -175,8 +175,3 @@ nnoremap <silent> <C-t> :tabnew<CR>
 " Q: exit visual-multi
 nmap <C-K> <C-Up>
 nmap <C-J> <C-Down>
-
-" vim-session
-let g:session_autosave = 'no'
-command SS SaveSession default
-command OS OpenSession default
