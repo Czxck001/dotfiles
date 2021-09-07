@@ -175,3 +175,7 @@ nnoremap <silent> <C-t> :tabnew<CR>
 " Q: exit visual-multi
 nmap <C-K> <C-Up>
 nmap <C-J> <C-Down>
+
+" restore X session after reattach
+command R execute "xrestore " . system("tmux show-environment DISPLAY | sed \"s:^.*=::\"")
+autocmd VimEnter * R
