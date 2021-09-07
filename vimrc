@@ -178,4 +178,6 @@ nmap <C-J> <C-Down>
 
 " restore X session after reattach
 command R execute "xrestore " . system("tmux show-environment DISPLAY | sed \"s:^.*=::\"")
-autocmd VimEnter * R
+if has("x11")
+  autocmd VimEnter * R
+end
