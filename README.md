@@ -44,6 +44,14 @@ Install [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm):
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+### fzf Setup
+
+It's in general better to let `fzf` avoid searching for some large and often meaningless folders like `.git` and `bazel-*`:
+
+```bash
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!**/.git' --glob '!bazel-*'"
+```
+
 ## Troubleshooting
 
 ### Vim's `E353: Nothing in register +` after reattaching to a tmux session
