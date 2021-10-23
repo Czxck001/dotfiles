@@ -32,7 +32,7 @@ c) Install [ccls](https://github.com/MaskRay/ccls).
 
 d) [Configure ccls for coc.nvim](https://github.com/MaskRay/ccls/wiki/coc.nvim).
 
-e) Install [coc-python](https://github.com/neoclide/coc-python).
+e) Install [coc-jedi](https://github.com/pappasam/coc-jedi).
 
 f) Install [svls](https://github.com/dalance/svls).
 
