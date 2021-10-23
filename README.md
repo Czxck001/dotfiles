@@ -66,6 +66,8 @@ The solution would be working with Vim newer than 8.1.1307 on the remote server,
 ```
 in the Vim console.
 
+In `vimrc`, an alias `:R` is created as a shortcut to the `:xrestore` command.
+
 Also see
 - https://github.com/vim/vim/issues/203
 - https://github.com/vim/vim/pull/844
