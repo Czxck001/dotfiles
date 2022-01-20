@@ -32,7 +32,7 @@ c) Install [ccls](https://github.com/MaskRay/ccls).
 
 d) [Configure ccls for coc.nvim](https://github.com/MaskRay/ccls/wiki/coc.nvim).
 
-e) Install [coc-python](https://github.com/neoclide/coc-python).
+e) Install [coc-jedi](https://github.com/pappasam/coc-jedi).
 
 f) Install [svls](https://github.com/dalance/svls).
 
@@ -42,6 +42,14 @@ Install [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm):
 
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+### fzf Setup
+
+It's in general better to let `fzf` avoid searching for some large and often meaningless folders like `.git` and `bazel-*`:
+
+```bash
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!**/.git' --glob '!bazel-*'"
 ```
 
 ## Troubleshooting
@@ -57,6 +65,8 @@ The solution would be working with Vim newer than 8.1.1307 on the remote server,
 :xrestore
 ```
 in the Vim console.
+
+In `vimrc`, an alias `:R` is created as a shortcut to the `:xrestore` command.
 
 Also see
 - https://github.com/vim/vim/issues/203
