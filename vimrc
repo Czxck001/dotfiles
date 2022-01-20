@@ -50,6 +50,22 @@ let g:syntastic_python_python_exec = 'python3'
 set ttymouse=xterm2
 set mouse=a
 
+" make vim put swap files in special locations
+if empty(glob($HOME . '/.vim/backup'))
+  call mkdir($HOME . '/.vim/backup', 'p')
+endif
+set backupdir=~/.vim/backup//
+
+if empty(glob($HOME . '/.vim/swap'))
+  call mkdir($HOME . '/.vim/swap', 'p')
+endif
+set directory=~/.vim/swap//
+
+if empty(glob($HOME . '/.vim/undo'))
+  call mkdir($HOME . '/.vim/undo', 'p')
+endif
+set undodir=~/.vim/undo//
+
 " keymaps
 let mapleader = "\<Space>"
 inoremap jj <ESC>
