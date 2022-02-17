@@ -7,7 +7,7 @@ Plug 'dhruvasagar/vim-prosession'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.78'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/scons.vim'
 Plug 'scrooloose/nerdcommenter'
