@@ -14,7 +14,16 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!**/.git' --glo
 
 ## Troubleshooting
 
+### Vim clipboard stops working in an intermittent manner
+The symptom is after logging in a remote server through ssh+X11 for a while, Vim clipboard will no longer sync with system clipboard. When it happens, xrestore will often succeed but won't solve the problem. Detaching and reattaching the tmux session won't work neither. The only way to get rid of the problem is deattach from tmux and re-login to the remote server via SSH, then reattach to the tmux session and execute xrestore. However, the same issue often relapses after certain period of time of using. 
+
+The exact trigger to the issue is still unknown, causing it very difficult to debug. The issue will appear whether using tmux on the remote server or not. Often, when the issue happens inside a tmux session, the tmux copying mechanism can still work, indicating it's unrelated to pasteboard connection between tmux through ssh+X11 and iTerm2.
+
+It's finally discovered that [Bracketed-paste](https://en.wikipedia.org/wiki/Bracketed-paste) will interfere with the pasteboard communication through iTerm2<->X11<->Vim. In light of this, it's highly recommended to disable this feature in iTerm2, which will permanently solve this issue. This disabling is often necessary because bracketed-paste is enabled by default.
+- iTerm2 (3.4.18) -> Preference -> Profiles -> Terminal -> disable the option of "Terminal may enable paste bracketing".
+
 ### Vim's `E353: Nothing in register +` after reattaching to a tmux session
+
 
 In `vimrc`, the clipboard is configured to `unnamedplus` whenever X11 is available. This enables a synchronized clipboard when executing Vim on a remote server via an SSH session with X11 forwarded.
 
