@@ -182,6 +182,10 @@ let g:floaterm_autoclose=2  " Always auto-close window.
 command T FloatermNew
 command B FloatermNew broot
 
+" Because C-o is overridden to tabprev, we need to first link C-i as a hot key to
+" jump-to-previous.
+nnoremap <silent> <C-i> <C-o>
+
 " tab controls
 nnoremap <silent> <C-o> :tabprev<CR>
 nnoremap <silent> <C-p> :tabnext<CR>
@@ -197,3 +201,5 @@ command R execute "xrestore " . system("tmux show-environment DISPLAY | sed \"s:
 if has("x11")
   autocmd VimEnter * R
 end
+
+autocmd FileType python let b:coc_root_patterns = ['pyrightconfig.json']
