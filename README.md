@@ -4,22 +4,28 @@ Configuration files of Vim, Tmux, etc.
 
 Contributions are always welcome.
 
-### fzf Setup
+**NOTE**: The sections in this document are deliberately placed in reverse order, to facilitate setting up a new BSD/Linux, when `cat README.md` could be the most convenient way to browse this file given Vim is not ready aforehand.
 
-It's in general better to let `fzf` avoid searching for some large and often meaningless folders like `.git` and `bazel-*`:
-
-```bash
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!**/.git' --glob '!bazel-*'"
-```
 
 ## Troubleshooting
 
-### Vim clipboard stops working in an intermittent manner
+### Vim clipboard stops working in an intermittent manner (MacOS laptop + Linux remote)
+
 The symptom is after logging in a remote server through ssh+X11 for a while, Vim clipboard will no longer sync with system clipboard. When it happens, xrestore will often succeed but won't solve the problem. Detaching and reattaching the tmux session won't work neither. The only way to get rid of the problem is deattach from tmux and re-login to the remote server via SSH, then reattach to the tmux session and execute xrestore. However, the same issue often relapses after certain period of time of using. 
 
-The exact trigger to the issue is still unknown, causing it very difficult to debug. The issue will appear whether using tmux on the remote server or not. Often, when the issue happens inside a tmux session, the tmux copying mechanism can still work, indicating it's unrelated to pasteboard connection between tmux through ssh+X11 and iTerm2.
+The issue will appear whether using tmux on the remote server or not (w/o tmux). Often, when the issue happens inside a tmux session, the tmux copying mechanism can still work, indicating it's unrelated to pasteboard connection between tmux through ssh+X11 and iTerm2.
 
-It's finally discovered that [Bracketed-paste](https://en.wikipedia.org/wiki/Bracketed-paste) will interfere with the pasteboard communication through iTerm2<->X11<->Vim. In light of this, it's highly recommended to disable this feature in iTerm2, which will permanently solve this issue. This disabling is often necessary because bracketed-paste is enabled by default.
+It's finally discovered that the issue is caused by the ForwardX11Timeout mechanism of BSD's `ssh`. According to the [official document](https://man.openbsd.org/ssh_config#ForwardX11Timeout), BSD's `ssh` will refuse X11 forwarding request after establishing SSH connection of ForwardX11Timeout. By default, its duration is only 20 minutes. 
+
+When using Vim on the remote server, probably if after certain amount time of inactivity, the initial X11 forwarding connection will be cut off. After that, Vim will need to reestablish the connection by having a new X11 forwarding request, which will probably be rejected due to the short default ForwardX11Timeout of BSD's `ssh`, causing the issue that can only be solved by re-establishing the SSH connection.
+
+With this root cause found, here comes a simple solution: edit `~/.ssh/config` on MacOS laptop and increase the duration of ForwardX11Timeout:
+```
+ForwardX11Timeout 596h
+```
+According to the official document, setting this value to 0 can disable the timeout and permit life-time connection, which should also solve this issue (not verified yet).
+
+In a related manner, [Bracketed-paste](https://en.wikipedia.org/wiki/Bracketed-paste) will interfere with the pasteboard communication through iTerm2<->X11<->Vim. This causes some issue similar to the above but with different behaviors and rootcause. In light of this, it's recommended to disable this feature in iTerm2, which will permanently solve this issue. This disabling is often necessary because bracketed-paste is enabled by default.
 - iTerm2 (3.4.18) -> Preference -> Profiles -> Terminal -> disable the option of "Terminal may enable paste bracketing".
 
 ### Vim's `E353: Nothing in register +` after reattaching to a tmux session
@@ -70,6 +76,14 @@ Install [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm):
 
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+### fzf Setup
+
+It's in general better to let `fzf` avoid searching for some large and often meaningless folders like `.git` and `bazel-*`:
+
+```bash
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!**/.git' --glob '!bazel-*'"
 ```
 
 ## Soft Linkage
