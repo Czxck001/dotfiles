@@ -139,7 +139,10 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Remap keys for gotos
-nmap <silent> gd :call CocAction('jumpDefinition', 'tab drop') <CR>
+nmap <silent> gd :call CocAction('jumpDefinition', 'drop') <CR>
+nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit') <CR>
+nmap <silent> gt :call CocAction('jumpDefinition', 'tabe') <CR>
+
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
