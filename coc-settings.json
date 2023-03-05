@@ -1,3 +1,9 @@
 {
-  "python.pythonPath": "python3"
+  "python.pythonPath": "python3",
+  "python.linting.flake8Enabled": "true",
+  "list.normalMappings": {
+      "s": "action:vsplit",
+      "i": "action:split",
+      "o": "action:drop"
+  }
 }
