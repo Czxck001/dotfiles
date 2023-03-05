@@ -35,6 +35,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'rhysd/clever-f.vim'
 Plug 'markonm/traces.vim'
 Plug 'itchyny/vim-cursorword'
+Plug 'liuchengxu/vista.vim', {'commit': '33774aff5d8b224f24c2e4c6015c613c1a17bf74'}
 
 call plug#end()
 " end of vim-plug
@@ -147,6 +148,17 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " /coc.nvim
+
+" vista.vim icons
+let g:vista#renderer#icons = {
+  \ "function": "\u0192",
+  \ "variable": "\u2022",
+  \ "class": "\u2102",
+  \ "constant": "\u20a1",
+  \ "method": "\u20a5"
+  \ }
+
+command V Vista coc
 
 " set theme
 set background=dark
