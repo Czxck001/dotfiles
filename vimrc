@@ -217,4 +217,4 @@ if has("x11")
   autocmd VimEnter * R
 end
 
-autocmd FileType python let b:coc_root_patterns = ['pyrightconfig.json']
+autocmd FileType python let rootPatterns = ['pyrightconfig.json']
