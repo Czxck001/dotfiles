@@ -9,13 +9,18 @@ Contributions are always welcome.
 
 ## Troubleshooting
 
+### E1312 when using NERDTree and closing the last pane
+This is due to the usage of a legacy feature in plugin [vim-nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs), particularly, in [this function](https://github.com/jistr/vim-nerdtree-tabs/blob/07d19f0299762669c6f93fbadb8249da6ba9de62/nerdtree_plugin/vim-nerdtree-tabs.vim#L337C18-L341). A change in newer Vim that's introduced no later than patch 9.0.0907 makes the feature no longer working.
+
+Since `vim-nerdtree-tabs` is no longer actively maintained, the only solution so far would be using an older version of Vim, before finding an alternative of `vim-nerdtree-tabs`. So far, Vim v8.2.4929 is guaranteed to work.
+
 ### Vim clipboard stops working in an intermittent manner (MacOS laptop + Linux remote)
 
-The symptom is after logging in a remote server through ssh+X11 for a while, Vim clipboard will no longer sync with system clipboard. When it happens, xrestore will often succeed but won't solve the problem. Detaching and reattaching the tmux session won't work neither. The only way to get rid of the problem is deattach from tmux and re-login to the remote server via SSH, then reattach to the tmux session and execute xrestore. However, the same issue often relapses after certain period of time of using. 
+The symptom is after logging in a remote server through ssh+X11 for a while, Vim clipboard will no longer sync with system clipboard. When it happens, xrestore will often succeed but won't solve the problem. Detaching and reattaching the tmux session won't work neither. The only way to get rid of the problem is deattach from tmux and re-login to the remote server via SSH, then reattach to the tmux session and execute xrestore. However, the same issue often relapses after certain period of time of using.
 
 The issue will appear whether using tmux on the remote server or not (w/o tmux). Often, when the issue happens inside a tmux session, the tmux copying mechanism can still work, indicating it's unrelated to pasteboard connection between tmux through ssh+X11 and iTerm2.
 
-It's finally discovered that the issue is caused by the ForwardX11Timeout mechanism of BSD's `ssh`. According to the [official document](https://man.openbsd.org/ssh_config#ForwardX11Timeout), BSD's `ssh` will refuse X11 forwarding request after establishing SSH connection of ForwardX11Timeout. By default, its duration is only 20 minutes. 
+It's finally discovered that the issue is caused by the ForwardX11Timeout mechanism of BSD's `ssh`. According to the [official document](https://man.openbsd.org/ssh_config#ForwardX11Timeout), BSD's `ssh` will refuse X11 forwarding request after establishing SSH connection of ForwardX11Timeout. By default, its duration is only 20 minutes.
 
 When using Vim on the remote server, probably if after certain amount time of inactivity, the initial X11 forwarding connection will be cut off. After that, Vim will need to reestablish the connection by having a new X11 forwarding request, which will probably be rejected due to the short default ForwardX11Timeout of BSD's `ssh`, causing the issue that can only be solved by re-establishing the SSH connection.
 
